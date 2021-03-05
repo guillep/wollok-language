@@ -1,0 +1,11 @@
+/**
+ * Tests for Wollok closures.
+ *
+ * A closure represents an executable piece of code, with (optional) parameters
+ */
+describe "closure reflective capabilities" {
+
+  test "closure toString should be its source code" {
+    assert.equals("{x => 5 + x}", {x => 5 + x}.toString())
+  }
+}

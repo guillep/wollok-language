@@ -1,0 +1,20 @@
+/**
+  * Scenario: a wko inheriting and overriding a method from a custom superclass,
+  *           also calling superclass method
+  */
+class MyClass {
+  method myMethod() = 42
+}
+
+object myObject inherits MyClass {
+  method something() = 17
+  override method myMethod() = super() + 35
+}
+
+/**
+  * Tests
+  */
+test "object inherit from custom class and overrides method calling super" {
+  assert.equals(17, myObject.something())
+  assert.equals(77, myObject.myMethod())
+}

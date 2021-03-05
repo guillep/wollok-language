@@ -1,0 +1,32 @@
+/**
+  * Scenario: Methods and closurs using varargs
+  */
+class Sample {
+  method preffix(preffix, numbers...) = numbers.map{n=> preffix + n}
+}
+
+/**
+  * Tests
+  */
+describe "classes - methods - closures using varargs" {
+
+  test "varArgsInMethod: var args method must automatically box params as a list" {
+    const p = new Sample()
+    assert.equals("$1, $2, $3, $4", p.preffix("$", 1, 2, 3, 4).join(", "))
+  }
+
+  test "varArgsInMethod: Var args in method with just 1" {
+    const p = new Sample()
+    assert.equals("#1", p.preffix("#", 1).join(", "))
+  }
+
+  test "varArgsInMethod: Var args in method without elements" {
+    const p = new Sample()
+    assert.equals("", p.preffix("#").join(", "))
+  }
+
+  test "apply a closure with vararg parameters" {
+    assert.equals(10, { a, b... => a + b.sum() }.apply(1, 2, 3, 4))
+  }
+
+}

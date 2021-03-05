@@ -1,0 +1,29 @@
+/**
+ * Tests for Wollok numbers => extensions methods
+ */
+describe "Number operators" {
+
+  test "Times" {
+    var x = 0
+    6.times { i => x += 1 }
+    assert.equals(6, x)
+  }
+
+  test "Times fail" {
+    assert.throwsException({ 4.times("a") } )
+  }
+
+  test "Times using null" {
+    assert.throwsException({ 4.times(null) } )
+  }
+
+  test "isPrime" {
+    assert.notThat(1.isPrime())
+    assert.that(2.isPrime())
+    assert.that(3.isPrime())
+    assert.notThat(4.isPrime())
+    assert.that(5.isPrime())
+    assert.notThat(88.isPrime())
+    assert.that(17.isPrime())
+  }
+}
